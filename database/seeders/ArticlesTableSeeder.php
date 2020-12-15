@@ -34,7 +34,7 @@ class ArticlesTableSeeder extends Seeder
             Article::create([
                 'title' => $title,
                 'doctor_id' => $faker->numberBetween($min = 1, $max=6),
-                'category_id' => $faker->numberBetween($min = 1, $max=3),
+                'blog_category_id' => $faker->numberBetween($min = 1, $max=3),
                 'slug' => $slug,
                 'body' => $faker->text,
                 'image' => $image,
