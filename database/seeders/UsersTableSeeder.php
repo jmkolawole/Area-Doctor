@@ -25,6 +25,7 @@ class UsersTableSeeder extends Seeder
         // let's hash it before the loop, or else our seeder
         // will be too slow.
         $password = Hash::make('password');
+        $image = $faker->imageUrl($width=640, $height=480);
 
         User::create([
             'name' => 'Jimoh Kolawole',
@@ -33,6 +34,18 @@ class UsersTableSeeder extends Seeder
             'email' => 'admin@test.com',
             'phone' => '07062612572',
             'address' => 'victoria Island,Lagos',
+            'image' => $image,
+            'password' => $password,
+        ]);
+
+        User::create([
+            'name' => 'Isogun Oluwakemi',
+            'username' => 'kemolala',
+            'slug' => 'kemo',
+            'email' => 'kemi@area-doctor.com',
+            'phone' => '07062612572',
+            'address' => 'Lekki, Lagos',
+            'image' => $image,
             'password' => $password,
         ]);
 
@@ -40,6 +53,7 @@ class UsersTableSeeder extends Seeder
         for ($i = 0; $i < 5; $i++) {
         $name = $faker->name;
         $slug = Str::slug($name);
+        $image = $faker->imageUrl($width=640, $height=480);
 
             User::create([
                 'name' => $name,
@@ -48,6 +62,7 @@ class UsersTableSeeder extends Seeder
                 'email' => $faker->email,
                 'phone' => $faker->phoneNumber,
                 'address' => $faker->address,
+                'image' => $image,
                 'password' => $password,
             ]);
         }

@@ -27,16 +27,31 @@ class BlogCategoriesTableSeeder extends Seeder
 
 
         // And now let's generate a few dozen users for our app:
-        for ($i = 0; $i < 5; $i++) {
-            $name = $faker->word;
-        $slug = Str::slug($name);
-            BlogCategory::create([
-                'name' => $name,
-                'slug' => $slug,
-                'description' => $faker->sentence,
 
+            $name1 = 'Fitness';
+            $slug1 = Str::slug($name1);
+            BlogCategory::create([
+                'name' => $name1,
+                'slug' => $slug1,
+                'description' => $faker->sentence,
             ]);
-        }
+
+            $name2 = 'Heart';
+            $slug2 = Str::slug($name2);
+            BlogCategory::create([
+                'name' => $name2,
+                'slug' => $slug2,
+                'description' => $faker->sentence,
+            ]);
+
+            $name3 = 'Diet';
+            $slug3 = Str::slug($name3);
+            BlogCategory::create([
+                'name' => $name3,
+                'slug' => $slug3,
+                'description' => $faker->sentence,
+            ]);
+
 
     }
 }

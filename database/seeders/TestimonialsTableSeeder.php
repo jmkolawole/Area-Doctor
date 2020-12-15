@@ -31,7 +31,7 @@ class TestimonialsTableSeeder extends Seeder
         for ($i = 0; $i < 10; $i++) {
             Testimonial::create([
                 'doctor_Id' => $faker->numberBetween($min = 1, $max=6),
-                'user_id' => $faker->numberBetween($min = 1, $max=6),
+                'user_id' => $faker->numberBetween($min = 1, $max=7),
                 'body' => $faker->text,
             ]);
         }

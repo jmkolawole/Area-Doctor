@@ -24,6 +24,7 @@ class DoctorsTableSeeder extends Seeder
         // let's hash it before the loop, or else our seeder
         // will be too slow.
         $password = Hash::make('password');
+        $image = $faker->imageUrl($width=640, $height=480);
         Doctor::create([
             'name' => 'Ben Carson',
             'username' => 'BenC',
@@ -31,6 +32,7 @@ class DoctorsTableSeeder extends Seeder
             'email' => 'admin@test.com',
             'phone' => '07062612572',
             'address' => 'victoria Island,Lagos',
+            'image' => $image,
             'password' => $password,
         ]);
 
@@ -38,7 +40,7 @@ class DoctorsTableSeeder extends Seeder
         for ($i = 0; $i < 5; $i++) {
         $name = $faker->name;
         $slug = Str::slug($name);
-
+        $image = $faker->imageUrl($width=640, $height=480);
             Doctor::create([
                 'name' => $name,
                 'username' => $faker->firstName,
@@ -46,6 +48,7 @@ class DoctorsTableSeeder extends Seeder
                 'email' => $faker->email,
                 'phone' => $faker->phoneNumber,
                 'address' => $faker->address,
+                'image' => $image,
                 'password' => $password,
             ]);
         }
