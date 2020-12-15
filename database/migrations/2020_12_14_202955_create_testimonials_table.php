@@ -17,7 +17,7 @@ class CreateTestimonialsTable extends Migration
             $table->id();
             $table->integer('doctor_id');
             $table->integer('user_id');
-            $table->string('body');
+            $table->text('body');
             $table->timestamps();
         });
     }

@@ -19,7 +19,7 @@ class CreateArticlesTable extends Migration
             $table->integer('blog_category_id');
             $table->string('title');
             $table->string('slug');
-            $table->string('body');
+            $table->text('body');
             $table->string('image');
             $table->boolean('active')->default(0);
             $table->timestamps();
