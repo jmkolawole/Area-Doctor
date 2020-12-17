@@ -7,9 +7,14 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable
+
+use Tymon\JWTAuth\Contracts\JWTSubject;
+
+class User extends Authenticatable implements JWTSubject
 {
     use HasFactory, Notifiable;
+
+    protected $guard = 'user';
 
     /**
      * The attributes that are mass assignable.
@@ -18,6 +23,10 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'username',
+        'slug',
+        'phone',
+        'address',
         'email',
         'password',
     ];
@@ -43,5 +52,15 @@ class User extends Authenticatable
 
     public function testimonials(){
         return $this->hasOne('App\Models\Testimonial');
+    }
+
+
+    public function getJWTIdentifier(Type $var = null)
+    {
+        return $this->getKey();
+    }
+
+    public function getJWTCustomClaims(){
+        return [];
     }
 }
