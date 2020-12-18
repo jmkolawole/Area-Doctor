@@ -79,7 +79,7 @@ class DoctorController extends Controller
          "message" => "Login Successful",
          "token"=> $token
 
-             ], 201);
+             ], 201)->header('Authorization',$token);
      }
 
 
@@ -105,6 +105,20 @@ class DoctorController extends Controller
         return response()->json([
             "message" => "Logout Successful",
                 ], 201);
+    }
+
+
+    public function refresh(){
+        if($token = $this->guard('doctor')->refresh()){
+            return response()->jsonjson([
+                "message" => "Successful",
+                    ], 201)->header('Authorization',$token);
+
+        }else{
+            return response()->json([
+              'error' => 'refresh token error'
+            ],401);
+        }
     }
 
 }

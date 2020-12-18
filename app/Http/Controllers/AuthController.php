@@ -74,9 +74,7 @@ class AuthController extends Controller
          "message" => "Login Successful",
          "token"=> $token
 
-             ], 201);
-
-
+             ], 201)->header('Authorization',$token);
      }
      public function me(){
         // if(auth()->guard('users')->check()){
@@ -90,8 +88,6 @@ class AuthController extends Controller
              }else if(auth()->guard('doctor')->check()){
                  return response()->json([
                      "message" => "Doctor here",
-
-
                          ], 201);
              }
              }
@@ -102,6 +98,19 @@ class AuthController extends Controller
         return response()->json([
             "message" => "Logout Successful",
                 ], 201);
+    }
+
+    public function refresh(){
+        if($token = $this->guard('user')->refresh()){
+            return response()->jsonjson([
+                "message" => "Successful",
+                    ], 201)->header('Authorization',$token);
+
+        }else{
+            return response()->json([
+              'error' => 'refresh token error'
+            ],401);
+        }
     }
 
 
